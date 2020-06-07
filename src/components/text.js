@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { SkeletonContext } from '../skeleton-system/skeleton';
 
 const skeltonStyles = {
   backgroundColor: '#666666',
@@ -7,12 +8,14 @@ const skeltonStyles = {
 }
 
 export const Text = ({
-  skeleton = false,
+  // skeleton = false,
   style = {},
   children,
 }) => {
+  const isLoading = useContext(SkeletonContext)
+
   return {
     true: <p style={{ ...skeltonStyles, ...style }}>loading...</p>,
     false: <p style={{ ...style }}>{children}</p>,
-  }[skeleton]
+  }[isLoading]
 }
