@@ -1,14 +1,25 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
-export const SkeletonContext = React.createContext(false);
+const SkeletonContext = React.createContext(false);
 
-export const SkeletonProvider = ({
-  value,
+export const SkeletonArea = ({
+  connect,
   children
 }) => {
   return (
-    <SkeletonContext.Provider value={value}>
+    <SkeletonContext.Provider value={connect}>
       {children}
     </SkeletonContext.Provider>
   )
 }
+
+export const useIsSkeletonLoading = () => useContext(SkeletonContext)
+
+export const useSkeletonData = ({ realData, fakeData, isLoadingPredicate }) => {
+  const isLoading = isLoadingPredicate(realData)
+  const data = isLoading ? fakeData : realData;
+  return {
+    data,
+    connector: isLoading,
+  }
+}; 

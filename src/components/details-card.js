@@ -14,8 +14,7 @@ const styles = {
     flexGrow: 1
   },
   title: {
-    marginTop: '.rem',
-    paddingTop: '0px',
+    paddingTop: '0',
     fontWeight: '700',
   },
   author: {

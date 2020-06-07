@@ -1,6 +1,6 @@
 import React from 'react';
 import { DetailsCard } from './details-card';
-import { SkeletonProvider } from '../skeleton-system/skeleton';
+import { SkeletonArea, useSkeletonData } from './../skeleton-system/skeleton';
 
 
 export const RepoList = ({
@@ -8,15 +8,17 @@ export const RepoList = ({
   isLoading = false,
 }) => {
 
-  const data = isLoading
-    ? [{ id: 1 }, { id: 2 }, { id: 3 }]
-    : repos;
+  const { data, connector } = useSkeletonData({
+    realData: repos,
+    fakeData: [{ id: 1 }, { id: 2 }, { id: 3 }],
+    isLoadingPredicate: () => isLoading,
+  })
 
   return (
-    <SkeletonProvider value={isLoading}>
+    <SkeletonArea connect={connector}>
       {
         data.map(({ id, ...repo }) => <DetailsCard key={id} {...repo} />)
       }
-    </SkeletonProvider>
+    </SkeletonArea>
   )
 }
