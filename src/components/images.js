@@ -1,5 +1,5 @@
-import React, { useContext } from 'react'
-import { SkeletonContext } from '../skeleton-system/skeleton'
+import React from 'react'
+import { useIsSkeletonLoading } from './../skeleton-system/skeleton';
 
 export const Image = ({
   src,
@@ -7,7 +7,7 @@ export const Image = ({
   height,
   alt,
 }) => {
-  const isLoading = useContext(SkeletonContext)
+  const isLoading = useIsSkeletonLoading();
   return {
     true: <div style={{ width, height, backgroundColor: '#666666' }} />,
     false: <img alt={alt} width={width} height={height} src={src} />,

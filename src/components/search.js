@@ -6,14 +6,14 @@ const styles = {
     backgroundColor: '#4A4A4A',
     borderRadius: 12,
     display: 'flex',
-    paddingTop: 5,
-    paddingBottom: 5,
-    paddingLeft: 5,
-    paddingRight: 5,
+    paddingTop: '.5rem',
+    paddingBottom: '.5rem',
+    paddingLeft: '.5rem',
+    paddingRight: '.5rem',
   },
   input: {
     padding: 0,
-    paddingLeft: 5,
+    paddingLeft: '.5rem',
     backgroundColor: 'transparent',
     color: '#ffffff',
     border: 'none',
@@ -22,7 +22,7 @@ const styles = {
   },
   button: {
     padding: 0,
-    paddingRight: 8,
+    paddingRight: '.5rem',
     border: 0,
     backgroundColor: 'transparent'
   }
