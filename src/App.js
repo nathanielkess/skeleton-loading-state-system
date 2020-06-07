@@ -1,24 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import { Search } from './components/search';
+import { RepoList } from './components/repo-list';
+import { Header } from './components/header';
+
+
+const styles = {
+  app: {
+    maxWidth: '450px',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    paddingTop: '2rem',
+  }
+}
+
 
 function App() {
+
+  const [gitRepos, setGetRepos] = useState([]);
+
+  const handleSearchSubmit = (query) => {
+    fetch(`https://api.github.com/search/repositories?q=${query}`)
+      .then(response => response.json())
+      .then(({ items }) => items)
+      .then((r) => { console.log(r); return r })
+      .then(items => items.map(item => ({
+        description: item.description,
+        author: item.owner.login,
+        stars: item.stargazers_count,
+        id: item.id,
+      })))
+      .then(setGetRepos)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App" style={styles.app}>
+      <Header iconName="github">Search Github Repos</Header>
+      <Search onSubmit={handleSearchSubmit} />
+      <RepoList repos={gitRepos} />
     </div>
   );
 }
