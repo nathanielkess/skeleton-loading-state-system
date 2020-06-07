@@ -37,13 +37,11 @@ function App() {
   }
 
   return (
-    <SkeletonProvider value={isLoading}>
-      <div className="App" style={styles.app}>
-        <Header iconName="github">Search Github Repos</Header>
-        <Search onSubmit={handleSearchSubmit} />
-        <RepoList isLoading={isLoading} repos={gitRepos} />
-      </div>
-    </SkeletonProvider>
+    <div className="App" style={styles.app}>
+      <Header iconName="github">Search Github Repos</Header>
+      <Search onSubmit={handleSearchSubmit} />
+      <RepoList isLoading={isLoading} repos={gitRepos} />
+    </div>
   );
 }
 

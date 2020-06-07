@@ -1,5 +1,6 @@
 import React from 'react';
 import { DetailsCard } from './details-card';
+import { SkeletonProvider } from '../skeleton-system/skeleton';
 
 
 export const RepoList = ({
@@ -12,10 +13,10 @@ export const RepoList = ({
     : repos;
 
   return (
-    <>
+    <SkeletonProvider value={isLoading}>
       {
         data.map(({ id, ...repo }) => <DetailsCard key={id} {...repo} />)
       }
-    </>
+    </SkeletonProvider>
   )
 }
