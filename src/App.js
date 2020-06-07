@@ -18,8 +18,10 @@ const styles = {
 function App() {
 
   const [gitRepos, setGetRepos] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSearchSubmit = (query) => {
+    setIsLoading(true);
     fetch(`https://api.github.com/search/repositories?q=${query}`)
       .then(response => response.json())
       .then(({ items }) => items)
@@ -31,13 +33,14 @@ function App() {
         id: item.id,
       })))
       .then(setGetRepos)
+      .then(() => setIsLoading(false))
   }
 
   return (
     <div className="App" style={styles.app}>
       <Header iconName="github">Search Github Repos</Header>
       <Search onSubmit={handleSearchSubmit} />
-      <RepoList repos={gitRepos} />
+      <RepoList isLoading={isLoading} repos={gitRepos} />
     </div>
   );
 }
