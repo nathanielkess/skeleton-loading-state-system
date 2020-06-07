@@ -3,7 +3,6 @@ import './App.css';
 import { Search } from './components/search';
 import { RepoList } from './components/repo-list';
 import { Header } from './components/header';
-import { SkeletonProvider } from './skeleton-system/skeleton'
 
 
 const styles = {
