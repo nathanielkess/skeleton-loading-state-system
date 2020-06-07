@@ -19,6 +19,7 @@ const styles = {
     fontWeight: '700',
   },
   author: {
+    marginTop: '.3rem',
     fontSize: '.8rem',
   },
   stars: {
