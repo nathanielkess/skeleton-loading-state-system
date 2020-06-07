@@ -3,6 +3,7 @@ import './App.css';
 import { Search } from './components/search';
 import { RepoList } from './components/repo-list';
 import { Header } from './components/header';
+import { SkeletonProvider } from './skeleton-system/skeleton'
 
 
 const styles = {
@@ -25,7 +26,6 @@ function App() {
     fetch(`https://api.github.com/search/repositories?q=${query}`)
       .then(response => response.json())
       .then(({ items }) => items)
-      .then((r) => { console.log(r); return r })
       .then(items => items.map(item => ({
         description: item.description,
         author: item.owner.login,

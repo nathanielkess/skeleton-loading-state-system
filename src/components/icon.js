@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { SkeletonContext } from '../skeleton-system/skeleton';
 
 const svgIcons = (
   size,
@@ -36,10 +37,11 @@ export const Icon = ({
   name = 'github',
   size = 35,
   color = '#ffffff',
-  skeleton = false,
+  // skeleton = false,
   ...props
 }) => {
-  const colorValue = (skeleton) ? '#666666' : color;
+  const isLoading = useContext(SkeletonContext);
+  const colorValue = (isLoading) ? '#666666' : color;
   const Component = svgIcons(size, colorValue)[name];
   return <Component {...props} />
 }
