@@ -24,7 +24,7 @@ function App() {
     setIsLoading(true);
     fetch(`https://api.github.com/search/repositories?q=${query}`)
       .then(response => response.json())
-      .then(({ items }) => items)
+      .then(({ items }) => items ?? [])
       .then(items => items.map(item => ({
         description: item.description,
         author: item.owner.login,
