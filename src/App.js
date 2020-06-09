@@ -17,7 +17,7 @@ const styles = {
 
 function App() {
 
-  const [gitRepos, setGetRepos] = useState([]);
+  const [gitRepos, setGitRepos] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSearchSubmit = (query) => {
@@ -31,7 +31,7 @@ function App() {
         stars: item.stargazers_count,
         id: item.id,
       })))
-      .then(setGetRepos)
+      .then(setGitRepos)
       .then(() => setIsLoading(false))
   }
 
