@@ -7,11 +7,11 @@ This repo was created to complement a blog post about Skeleton loading states.
 
 ![Skeleton Loading State](https://raw.githubusercontent.com/nathanielkess/skeleton-loading-state-system/master/src/assets/nested-context.gif?raw=true "Skeleton")
 
-Read the full story here on Medium.
+Read the [full story here on Medium.](https://medium.com/@nathanielkessler/skeleton-loading-state-as-a-system-286e828ddf75) 
 
 ## Sandbox
 
-Check out a running sandbox here.
+Check out a [running sandbox here](https://codesandbox.io/s/github/nathanielkess/skeleton-loading-state-system).
 
 
 ## Getting Started
